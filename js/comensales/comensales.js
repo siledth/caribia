@@ -48,8 +48,8 @@ function valideKey(evt){
 				if (result.value == true) {
 					event.preventDefault();
 					var datos = new FormData($("#guardar_ba")[0]);
-					var base_url =window.location.origin+'/caribia/index.php/Comensales/registrar_b';
-					//var base_url = '/index.php/Comansales/registrar_b';
+					//var base_url =window.location.origin+'/caribia/index.php/Comensales/registrar_b';
+					var base_url = '/index.php/Comensales/registrar_b';
 					$.ajax({
 						url:base_url,
 						method: 'POST',
@@ -220,8 +220,8 @@ function valideKey(evt){
 				if (result.value == true) {
 					event.preventDefault();
 					var datos = new FormData($("#guardar_cargo")[0]);
-					var base_url =window.location.origin+'/caribia/index.php/Comensales/registrar_carg';
-					//var base_url = '/index.php/Comansales/registrar_b';
+					//var base_url =window.location.origin+'/caribia/index.php/Comensales/registrar_carg';
+					var base_url = '/index.php/Comensales/registrar_carg';
 					$.ajax({
 						url:base_url,
 						method: 'POST',
@@ -251,8 +251,8 @@ function valideKey(evt){
 	//BUSCAR BANCO PARA EDITAR
 	function modal_ver_cargo(id){
 		var id_exonerado = id;
-		var base_url =window.location.origin+'/caribia/index.php/Comensales/consulta_cargos';
-		//var base_url = '/index.php/Comansales/registrar_b';
+		//var base_url =window.location.origin+'/caribia/index.php/Comensales/consulta_cargos';
+		var base_url = '/index.php/Comensales/consulta_cargos';
 		$.ajax({
 			url: base_url,
 			method:'post',
@@ -292,8 +292,8 @@ function valideKey(evt){
 				if (result.value == true) {
 					event.preventDefault();
 					var datos = new FormData($("#editar")[0]);
-					var base_url =window.location.origin+'/caribia/index.php/Comensales/editar_cargos';
-					//var base_url = '/index.php/Comansales/registrar_b';
+					//var base_url =window.location.origin+'/caribia/index.php/Comensales/editar_cargos';
+					var base_url = '/index.php/Comensales/editar_cargos';
 					$.ajax({
 						url: base_urls,
 						method:'post',
@@ -336,8 +336,8 @@ function valideKey(evt){
 		}).then((result) => {
 			if (result.value == true) {
 				var id_exonerado = id
-				var base_url =window.location.origin+'/caribia/index.php/Comensales/eliminar_cargos';
-					//var base_url = '/index.php/Comansales/registrar_b';
+				//var base_url =window.location.origin+'/caribia/index.php/Comensales/eliminar_cargos';
+					var base_url = '/index.php/Comensales/eliminar_cargos';
 				$.ajax({
 					url:base_url,
 					method: 'post',

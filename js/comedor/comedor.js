@@ -1,6 +1,7 @@
 $('#comensales').on('select2:select', function (e) {
     var comensales = e.params.data['id'];
-    var base_url =window.location.origin+'/caribia/index.php/Comedor/listar_info';
+    //var base_url =window.location.origin+'/caribia/index.php/Comedor/listar_info';
+    var base_url = '/index.php/Comedor/listar_info';
 //llenan los datos 
     $.ajax({
         url: base_url,
@@ -108,8 +109,8 @@ function guardar_b(){
             if (result.value == true) {
                 event.preventDefault();
                 var datos = new FormData($("#guardar_ba")[0]);
-                var base_url =window.location.origin+'/caribia/index.php/Comedor/registrar_comedor';
-                //var base_url = '/index.php/Comansales/registrar_b';
+                //var base_url =window.location.origin+'/caribia/index.php/Comedor/registrar_comedor';
+                var base_url = '/index.php/Comedor/registrar_comedor';
                 $.ajax({
                     url:base_url,
                     method: 'POST',
