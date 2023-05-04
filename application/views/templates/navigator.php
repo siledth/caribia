@@ -112,7 +112,7 @@
                         <?php endif; ?>
                         <?php if (($this->session->userdata('certificacion') == 1)) : ?>
 
-                        <li class="has-sub">
+                        <!-- <li class="has-sub">
                             <a href="javascript:;">
                                 <b class="caret"></b>
                                 Reportes
@@ -131,7 +131,7 @@
                                 </li>
 
                             </ul>
-                        </li>
+                        </li> -->
                         <?php endif; ?>
                 </li>
 
@@ -183,153 +183,10 @@
 
                     <?php endif; ?>
 
-                    <?php if (($this->session->userdata('ver_parametro') == 1)) : ?>
-                    <li class="has-sub">
-                        <a href="javascript:;">
-                            <b class="caret"></b>
-                            <span>Tablas Parametros</span>
-                        </a>
-                        <ul class="sub-menu">
-                            <li>
-                                <a href="<?= base_url() ?>index.php/Certificacion/registrar_exonerado">
-                                    - Exonerados
-                                </a>
-                            </li>
-                            <li>
-                                <a href="<?= base_url() ?>index.php/Fuentefinanc/index">
-                                    - Fuente de Financiamiento
-                                </a>
-                            </li>
-                            <li>
-                                <a href="<?= base_url() ?>index.php/Fuentefinanc/alicuotaiva">
-                                    - Alicuota
-                                </a>
-                            </li>
-                            <li>
-                                <a href="<?= base_url() ?>index.php/Fuentefinanc/partidap">
-                                    - Partida Presupuestaria
-                                </a>
-                            </li>
-                            <li>
-                                <a href="<?= base_url() ?>index.php/Fuentefinanc/centra">
-                                    - Acción Centralizada
-                                </a>
-                            </li>
-                            <li>
-                                <a href="<?= base_url() ?>index.php/Fuentefinanc/und">
-                                    - Unidad de Medida
-                                </a>
-                            </li>
-                            <li>
-                                <a href="<?= base_url() ?>index.php/Fuentefinanc/ccnu">
-                                    - CCNU
-                                </a>
-                            </li>
-                            <li>
-                                <a href="<?= base_url() ?>index.php/diasferiados">
-                                    - Dias Feriados
-                                </a>
-                            </li>
-                            <li>
-                                <a href="<?= base_url() ?>index.php/Fuentefinanc/estado">
-                                    - Estado
-                                </a>
-                            </li>
-                            <li>
-                                <a href="<?= base_url() ?>index.php/Fuentefinanc/municipio">
-                                    - Municipio
-                                </a>
-                            </li>
-                            <li>
-                                <a href="<?= base_url() ?>index.php/Fuentefinanc/parroquia">
-                                    - Parroquia
-                                </a>
-                            </li>
-                            <li>
-                                <a href="<?= base_url() ?>index.php/Fuentefinanc/ciudades">
-                                    - Ciudades
-                                </a>
-                            </li>
-                            <li>
-                                <a href="<?= base_url() ?>index.php/Fuentefinanc/operador">
-                                    - Operadora
-                                </a>
-                            </li>
-                            <li>
-                                <a href="<?= base_url() ?>index.php/Fuentefinanc/proce">
-                                    - Procedimiento Selección de Contratista
-                                </a>
-                            </li>
-                            <li>
-                                <a href="<?= base_url() ?>index.php/Fuentefinanc/supuestos">
-                                    - Supuestos de Procedimientos
-                                </a>
-                            </li>
-                            <li>
-                                <a href="<?= base_url() ?>index.php/Fuentefinanc/edocivil">
-                                    - Estado Civil
-                                </a>
-                            </li>
-                            <li>
-                                <a href="<?= base_url() ?>index.php/Fuentefinanc/Casificacion">
-                                    - Clasificación
-                                </a>
-                            </li>
-                        </ul>
-                    </li>
-                    <?php endif; ?>
-
+                    
 
                     <?php if (($this->session->userdata('ver_user') == 1)) : ?>
-                    <li class="has-sub">
-                        <a href="javascript:;">
-                            <span>Usuarios</span>
-                        </a>
-                        <ul class="sub-menu">
-                            <?php if (($this->session->userdata('ver_user_exter') == 1)) : ?>
-                            <!-- <li>
-                            <a href="<?= base_url() ?>index.php/user">
-                                <i class="fas fa-lg fa-fw m-r-10 fa-list-alt"></i>- Registros
-                            </a>
-                        </li> -->
-
-
-                            <li>
-                                <a href="<?= base_url() ?>index.php/user/int">
-                                    <i class="fas fa-lg fa-fw m-r-10 fa-list-alt"></i>- Registros Usuarios
-                                </a>
-                            </li>
-                            <?php endif; ?>
-                            <?php if (($this->session->userdata('ver_user_desb') == 1)) : ?>
-                            <li>
-                                <a href="<?= base_url() ?>index.php/user/bloquear_usuario">
-                                    <i class="fas fa-lg fa-fw m-r-10 fa-list-alt"></i>- Desbloqueo de Usuarios
-                                </a>
-                            </li>
-                            <?php endif; ?>
-                            <?php if (($this->session->userdata('ver_user_lista') == 1)) : ?>
-                            <li>
-                                <a href="<?= base_url() ?>index.php/user/modif_usuarios">
-                                    <i class="fas fa-lg fa-fw m-r-10 fa-list-alt"></i>- Lista Usuarios SNC
-                                </a>
-                            </li>
-                            <?php endif; ?>
-                            <?php if (($this->session->userdata('ver_user_lista') == 1)) : ?>
-                            <li>
-                                <a href="<?= base_url() ?>index.php/user/listado_usuarios">
-                                    <i class="fas fa-lg fa-fw m-r-10 fa-list-alt"></i>- Lista Usuarios externos
-                                </a>
-                            </li>
-                            <?php endif; ?>
-                            <?php if (($this->session->userdata('ver_user_perfil') == 1)) : ?>
-                            <li>
-                                <a href="<?= base_url() ?>index.php/user/perfil_">
-                                    <i class="fas fa-lg fa-fw m-r-10 fa-list-alt"></i>- Perfiles
-                                </a>
-                            </li>
-                            <?php endif; ?>
-                        </ul>
-                    </li>
+                   
 
                 </ul>
             </li>
