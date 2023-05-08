@@ -9,18 +9,18 @@
                     <div class="panel-body">
                         <div class="row">
                            
-                            <div class="form-group col-6">
+                            <div class="form-group col-12">
                                 <label>Selecciona Comensal <b title="Campo Obligatorio"
                                         style="color:red">*</b></label>
                                         <select style="width: 100%;" onclick="trae_inf();" id="comensales" name="comensales"
                                     class="default-select2">
                                     <option value="0">Seleccione</option>
                                     <?php foreach ($comensales as $data): ?>
-                                    <option value="<?=$data['id_comensales']?>"><?=$data['comensales']?></option>
+                                    <option value="<?=$data['id_comensales']?>"><?=$data['nombre']?></option>
                                     <?php endforeach; ?>
                                 </select>
                             </div>
-                            <div class="form-group col-6">
+                            <div class="form-group col-12">
                                 <label>Unidad de Adscripción <b title="Campo Obligatorio" style="color:red">*</b></label>
                                 <input type="text" name="id_und_adscripcion" id="id_und_adscripcion" class="form-control" readonly>
                             </div>
@@ -28,10 +28,12 @@
                                 <label> Cargo <b title="Campo Obligatorio" style="color:red">*</b></label>
                                 <input type="text" name="id_cargo" id="id_cargo" class="form-control" readonly>
                                 <input type="hidden" name="id_cargos" id="id_cargos" class="form-control" readonly>
-                                <label> tarifa <b title="Campo Obligatorio" style="color:red">*</b></label>
-                                <input type="text" name="tarifa" id="tarifa" class="form-control" readonly> 
-                                <label> total <b title="Campo Obligatorio" style="color:red">*</b></label>   
-                                <input type="text" name="total" id="total" class="form-control" readonly>                           
+                                <!-- <label> tarifa <b title="Campo Obligatorio" style="color:red">*</b></label> -->
+                                <input type="hidden" name="tarifa" id="tarifa" class="form-control" readonly> 
+                                <!-- <label> Cantidad a pagar <b title="Campo Obligatorio" style="color:red">*</b></label>    -->
+                                <input type="hidden" name="total" id="total" class="form-control" readonly>  
+                                <label> Total Comida entregada <b title="Campo Obligatorio" style="color:red">*</b></label>   
+                                <input type="text" name="total_comida" id="total_comida" class="form-control" readonly>                         
                             </div>
                             <div class="form-group col-6" id="invitados" style="display: none;">
                                 <label> Numero de invitados <b title="Campo Obligatorio" style="color:red">*</b></label>
@@ -61,13 +63,13 @@
                         <div class="panel panel-inverse">
                             <div class="panel-heading"></div>
                             
-                            <table id="data-table-default" data-order='[[ 1, "asc" ]]'
+                            <table id="data-table-default" data-order='[[ 0, "desc" ]]'
                             class="table table-bordered table-hover">
                                     <thead style="background:#01cdb2">
                                         <tr style="text-align:center">
                                             <th style="color:white;">Cedula</th>
                                             <th style="color:white;">Nombre y Apellido</th>
-                                            <th style="color:white;">Unidad de Adscripción</th>
+                                            <th style="color:white;">Comida Entregada</th>
                                           
                                         </tr>
                                     </thead>
@@ -75,9 +77,9 @@
                                         <?php foreach($comedor as $data):?>
                                         <tr class="odd gradeX" style="text-align:center">
                                             
-                                            <td><?=$data['cedula']?> </td>
+                                            <td><?=$data['id_comedor']?> </td>
                                             <td><?=$data['descrp']?> </td>
-                                            <td> <?=$data['und_adscripcion']?></td>
+                                            <td> <?=$data['comida_entregada']?></td>
                                             
                                             
                                         </tr>

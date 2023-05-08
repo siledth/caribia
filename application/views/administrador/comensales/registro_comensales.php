@@ -68,13 +68,15 @@
                                     <tbody>
                                         <?php foreach($comensales as $data):?>
                                         <tr class="odd gradeX" style="text-align:center">
-                                            <td><?=$data['cedula']?> </td>
+                                            <td><?=$data['id_comensales']?> </td>
                                             <td><?=$data['nombre']?> </td>
                                             <td><?=$data['descrip']?> </td>
                                             
                                                                                     
                                             <td class="center">
-                                           
+                                            <a class="button" href="<?php echo base_url() ?>index.php/Comensales/comensal_editar?id=<?php echo $data['id_comensales'];?>">
+                                                            <i title="Ver Modificar" class="fas fa-lg fa-fw  fa-edit" style="color: midnightblue;"></i>
+                                                        <a />
                                             </td>
                                         </tr>
                                         <?php endforeach;?>
@@ -88,13 +90,13 @@
     </div>
 
     <script src="<?=base_url()?>js/comensales/comensales.js"></script>
-
+    <script src="<?=base_url()?>js/comensales/edi_comensales.js"></script>
     <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
         aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Editar comensaless</h5>
+                    <h5 class="modal-title" id="exampleModalLabel">Editar comensales</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
@@ -103,20 +105,30 @@
                     <form class="form-horizontal" id="editar" data-parsley-validate="true" method="POST"
                         enctype="multipart/form-data">
                         <div class="row">
-                            <div class="form-group col-4">
-                                <label>ID</label>
+                        <div class="form-group col-2">
+                                <label>id</label>
                                 <input class="form-control" type="text" name="id" id="id" readonly>
                             </div>
-                            <div class="col-8"></div>
                             <div class="form-group col-4">
-                                <label>Rif</label>
+                                <label>Cedula</label>
+                                <input class="form-control" type="number" name="cedula_edit" id="cedula_edit" >
+                            </div>
+                           
+                            <div class="form-group col-4">
+                                <label>Nombre y Apellido</label>
                                 <input class="form-control" type="text" onkeypress="return valideKey(event);"
-                                    name="cod_banco_edit" id="cod_banco_edit">
+                                    name="nombre_edit" id="nombre_edit">
+                            </div>
+                          
+                            <div class="form-group col-8">
+                                <label>Cargo </label>
+                                <input type="text" class="form-control" onkeypress="may(this);" id="id_cargo_edit"
+                                    name="id_cargo_edit">
                             </div>
                             <div class="form-group col-8">
-                                <label>Nombre </label>
-                                <input type="text" class="form-control" onkeypress="may(this);" id="nombre_banco_edit"
-                                    name="nombre_banco_edit">
+                                <label>Unidad de Adscripción </label>
+                                <input type="text" class="form-control" onkeypress="may(this);" id="id_und_adscripcion_edit"
+                                    name="id_und_adscripcion_edit">
                             </div>
                         </div>
                     </form>
@@ -124,7 +136,7 @@
                 <div class="modal-footer">
                     <button type="button" onclick="javascript:window.location.reload()" class="btn btn-secondary"
                         data-dismiss="modal">Cerrar</button>
-                    <button type="button" onclick="editar_b();" class="btn btn-primary">Guardar</button>
+                    <button type="button" onclick="editar_comanesales();" class="btn btn-primary">Guardar</button>
                 </div>
             </div>
         </div>

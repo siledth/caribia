@@ -95,30 +95,16 @@ class User extends CI_Controller
       //crerar usuario externo
 	  public function int()
 	{ if(!$this->session->userdata('session'))redirect('login');
-		// $data['organo']  = $this->User_model->consultar_organos();
-		// $data['entes']   = $this->User_model->consultar_entes();
-		// $data['enteads'] = $this->User_model->consultar_enteads();
+	
 		$data['ver_perfil'] = $this->User_model->consultar_perfiles(); 
-		$data['final']  = $this->User_model->consulta_organoente();
+		
 
 		$this->load->view('templates/header.php');
 		$this->load->view('templates/navigator.php');
 		$this->load->view('user/usuarioexterno.php', $data);
 		$this->load->view('templates/footer.php');
 	}
-		public function chk_password_expression($str)
-			{ if(!$this->session->userdata('session'))redirect('login');
-			if (1 !== preg_match("/^.*(?=.{6,})(?=.*[0-9])(?=.*[^a-zA-Z\d])(?=.*[a-z])(?=.*[A-Z]).*$/", $str))
-			{
-				$this->form_validation->set_message('chk_password_expression', '%s debe tener al menos 6
-				caracteres y debe contener al menos una Caracter Especial ,una letra Minúscula, una Letra Mayúscula y un Número');
-				return FALSE;
-			}
-			else
-			{
-				return TRUE;
-			}
-			}
+		
 		function select_validate($selectValue)
 				{ 
 				// 'none' is the first option and the text says something like "-Choose one-"
@@ -143,57 +129,32 @@ class User extends CI_Controller
 		$rif=$data['rif'];
 		$nombrefun = $this->input->post("nombrefun");
 		$apellido = $this->input->post("apellido");
-		$tipo_ced = $this->input->post("tipo_ced");
-		$cedula = $this->input->post("cedula");
-		$cargo = $this->input->post("cargo");
-		$tele_1 = $this->input->post("tele_1");
-		$tele_2 = $this->input->post("tele_2");
-		$oficina = $this->input->post("oficina");
-		$fecha_designacion = $this->input->post("fecha_designacion");
-		$numero_gaceta = $this->input->post("numero_gaceta");
-		$obser = $this->input->post("obser");
-		$email = $this->input->post("email");
-		$password = $this->input->post("password");
-		$repeatPassord = $this->input->post("repeatPassord");
-		$usuario = $this->input->post("usuario");
-		$unidad = $this->input->post("id_unidad");
-		$perfil = $this->input->post("perfil");
+		
 		//aca empiezo las validaciones
 		$this->form_validation->set_rules('perfil', 'perfil', 'trim|required|callback_select_validate');
 		$this->form_validation->set_rules('id_unidad', 'id_unidad', 'trim|required|callback_select_validate');
 		$this->form_validation->set_rules('nombrefun', 'Nombre ', 'trim|required|min_length[3]');
-		$this->form_validation->set_rules('apellido', 'Apellido ', 'trim|required|min_length[4]');
-		$this->form_validation->set_rules('tipo_ced', 'tipo_ced ', 'trim|required|min_length[1]');
+
 		$this->form_validation->set_rules('cedula', 'cedula de dentidad', 'trim|required|min_length[6]|is_natural');
-		$this->form_validation->set_rules('cargo', 'cargo ', 'trim|required|min_length[1]');
-		$this->form_validation->set_rules('tele_1', 'tele_1 comleto', 'trim|required|min_length[6]|is_natural');
-		$this->form_validation->set_rules('oficina', 'oficina ', 'trim|required|min_length[1]');
-		$this->form_validation->set_rules('cargo', 'cargo ', 'trim|required|min_length[1]');
-		$this->form_validation->set_rules('fecha_designacion', 'fecha_designacion ', 'trim|required|min_length[1]');
-		$this->form_validation->set_rules('numero_gaceta', 'numero_gaceta ', 'trim|required|min_length[1]');
-		$this->form_validation->set_rules('obser', 'obser ', 'trim|required|min_length[1]');
 		$this->form_validation->set_rules('email', 'Correo eléctronico ', 'trim|required|valid_email|is_unique[usuario.email]');
 		//vista en public
 		$this->form_validation->set_rules(
 			'usuario', 'usuario',
-			'required|callback_chk_password_expression|is_unique[usuario.nombre]',
+			'required|is_unique[usuario.nombre]',
 			array(
 					'required'      => 'You have not provided %s.',
 					'is_unique'     => 'El nombre de usuario ya existe, intente de nuevo'
 			)
 	);
 
-		$this->form_validation->set_rules( 'password', 'Contraseña', 'trim|required|min_length[6]|max_length[15]|callback_chk_password_expression');
+		$this->form_validation->set_rules( 'password', 'Contraseña', 'trim|required|min_length[6]|max_length[15]');
 		$this->form_validation->set_rules('repeatPassord', 'Confirma contraseña', 'required|matches[password]');
 		//$this->form_validation->set_rules('usuario', 'Usuario', 'required|min_length[5]|is_unique[usuario.nombre]|callback_chk_password_expression');
 
 
 		if ($this->form_validation->run() == FALSE) {
 			if(!$this->session->userdata('session'))redirect('login');
-			$data['organo']  = $this->User_model->consultar_organos();
-			$data['entes']   = $this->User_model->consultar_entes();
-			$data['enteads'] = $this->User_model->consultar_enteads();
-			$data['final']  = $this->User_model->consulta_organoente();
+		
 			$data['ver_perfil'] = $this->User_model->consultar_perfiles(); 
 			$this->load->view('templates/header.php');
 			$this->load->view('templates/navigator.php');

@@ -1,14 +1,35 @@
 <?php
 class Comedor_model extends CI_model {
 
-   
-    public function consultar_comensales(){
-        $this->db->select('c.id_comensales,c.id_und_adscripcion, c.id_cargo, c.nombre as comensales, c.autorizado');
-      
-        $query = $this->db->get('public.comensales c');
-         return $response = $query->result_array();
-         
+    public function consultar_comensales($fecha){
+  
+        $query = $this->db->query("SELECT *
+        FROM public.comensales t1
+       WHERE NOT EXISTS (SELECT NULL
+                           FROM public.comedor t2
+                          WHERE t2.id_comensales = t1.id_comensales and t2.fecha_creacion = '$fecha')
+
+                                   "
+                                   );
+        return $response = $query->result_array();
+
     }
+    // public function consultar_comensales(){
+
+        
+
+
+
+
+    //     $this->db->select('c.id_comensales,c.id_und_adscripcion, c.id_cargo, c.nombre as comensales, c.autorizado, r.fecha_creacion,r.id_comensales ');
+    //     $this->db->join('public.comedor r', 'r.id_comensales = c.id_comensales', 'left');
+    //      $this->db->where('r.fecha_creacion', '04-05-2023');
+    //     // $this->db->where('c.id_comensales !=', '1');
+       
+    //           $query = $this->db->get('public.comensales c');
+    //      return $response = $query->result_array();
+         
+    // }
     public function consulta_adscrito(){
         $this->db->select('*');
         $query = $this->db->get('public.und_adscripcion');
@@ -71,7 +92,8 @@ function registrar_comida($data,$data2)
         'total'                 => $data['total'],
         'invitado'              => $data['invitado'],
         'autorizado'		    => $data['autorizado'],
-        'fecha_creacion'	 	            => $data['fecha'],
+        'comida_entregada'		=> $data['comida_entregada'],
+        'fecha_creacion'	 	=> $data['fecha'],
         'id_usuaio' 		    => $data['id_usuaio']
 
     );
@@ -88,14 +110,27 @@ function registrar_comida($data,$data2)
 
 }
 ///////////////////consultar comedor
-public function consultar_comedor(){
-    $this->db->select('p.nombre as descrp, p.cedula, b.und_adscripcion');
+public function consultar_comedor($fecha){
+    $this->db->select('p.nombre as descrp, p.cedula, b.comida_entregada, b.id_comedor');
     //$this->db->where('b.id_comensales', $data['comensales']);
     $this->db->join('public.comensales p', 'p.id_comensales = b.id_comensales', 'left');
+    $this->db->where('b.fecha_creacion', $fecha);
    // $this->db->join('public.cargo r', 'r.id_cargo = b.id_cargo', 'left');
     $query = $this->db->get('public.comedor b');
     return $response = $query->result_array();
 
     
 }
+
+public function consulta_autori($data)
+         {
+             $this->db->select('*');
+             $this->db->from('public.comensales');
+             $this->db->where('cedula', $data['autorizado']);
+             // $this->db->order_by("codigo_b", "Asc");
+             $query = $this->db->get();
+             if (count($query->result()) > 0) {
+                 return $query->row();
+             }
+         }
 }

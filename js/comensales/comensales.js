@@ -48,8 +48,8 @@ function valideKey(evt){
 				if (result.value == true) {
 					event.preventDefault();
 					var datos = new FormData($("#guardar_ba")[0]);
-					//var base_url =window.location.origin+'/caribia/index.php/Comensales/registrar_b';
-					var base_url = '/index.php/Comensales/registrar_b';
+					var base_url =window.location.origin+'/caribia/index.php/Comensales/registrar_b';
+					//var base_url = '/index.php/Comensales/registrar_b';
 					$.ajax({
 						url:base_url,
 						method: 'POST',
@@ -79,8 +79,8 @@ function valideKey(evt){
 	//BUSCAR BANCO PARA EDITAR
 	function modal_ver(id){
 		var id_exonerado = id;
-		//var base_url = window.location.origin+'/asnc/index.php/Certificaciones/consulta_b';
-		var base_url = '/index.php/Certificacion/consulta_b';
+		var base_url = window.location.origin+'/asnc/index.php/Certificaciones/consulta_b';
+		//var base_url = '/index.php/Certificacion/consulta_b';
 		$.ajax({
 			url: base_url,
 			method:'post',
@@ -120,8 +120,8 @@ function valideKey(evt){
 				if (result.value == true) {
 					event.preventDefault();
 					var datos = new FormData($("#editar")[0]);
-					//var base_urls =window.location.origin+'/asnc/index.php/Certificaciones/editar_b';
-					var base_urls = '/index.php/Certificacion/editar_b';
+					var base_urls =window.location.origin+'/asnc/index.php/Certificaciones/editar_b';
+					//var base_urls = '/index.php/Certificacion/editar_b';
 					$.ajax({
 						url: base_urls,
 						method:'post',
@@ -164,8 +164,8 @@ function valideKey(evt){
 		}).then((result) => {
 			if (result.value == true) {
 				var id_exonerado = id
-				//var base_url =window.location.origin+'/asnc/index.php/Certificaciones/eliminar_b';
-				var base_url = '/index.php/Certificacion/eliminar_b';
+				var base_url =window.location.origin+'/asnc/index.php/Certificaciones/eliminar_b';
+				//var base_url = '/index.php/Certificacion/eliminar_b';
 
 				$.ajax({
 					url:base_url,
@@ -220,8 +220,8 @@ function valideKey(evt){
 				if (result.value == true) {
 					event.preventDefault();
 					var datos = new FormData($("#guardar_cargo")[0]);
-					//var base_url =window.location.origin+'/caribia/index.php/Comensales/registrar_carg';
-					var base_url = '/index.php/Comensales/registrar_carg';
+					var base_url =window.location.origin+'/caribia/index.php/Comensales/registrar_carg';
+					//var base_url = '/index.php/Comensales/registrar_carg';
 					$.ajax({
 						url:base_url,
 						method: 'POST',
@@ -251,8 +251,8 @@ function valideKey(evt){
 	//BUSCAR BANCO PARA EDITAR
 	function modal_ver_cargo(id){
 		var id_exonerado = id;
-		//var base_url =window.location.origin+'/caribia/index.php/Comensales/consulta_cargos';
-		var base_url = '/index.php/Comensales/consulta_cargos';
+	    var base_url =window.location.origin+'/caribia/index.php/Comensales/consulta_cargos';
+		//var base_url = '/index.php/Comensales/consulta_cargos';
 		$.ajax({
 			url: base_url,
 			method:'post',
@@ -292,8 +292,8 @@ function valideKey(evt){
 				if (result.value == true) {
 					event.preventDefault();
 					var datos = new FormData($("#editar")[0]);
-					//var base_url =window.location.origin+'/caribia/index.php/Comensales/editar_cargos';
-					var base_url = '/index.php/Comensales/editar_cargos';
+					var base_url =window.location.origin+'/caribia/index.php/Comensales/editar_cargos';
+					//var base_url = '/index.php/Comensales/editar_cargos';
 					$.ajax({
 						url: base_urls,
 						method:'post',
@@ -336,8 +336,8 @@ function valideKey(evt){
 		}).then((result) => {
 			if (result.value == true) {
 				var id_exonerado = id
-				//var base_url =window.location.origin+'/caribia/index.php/Comensales/eliminar_cargos';
-					var base_url = '/index.php/Comensales/eliminar_cargos';
+				var base_url =window.location.origin+'/caribia/index.php/Comensales/eliminar_cargos';
+				//	var base_url = '/index.php/Comensales/eliminar_cargos';
 				$.ajax({
 					url:base_url,
 					method: 'post',
@@ -361,6 +361,29 @@ function valideKey(evt){
 						}
 					}
 				})
+			}
+		});
+	}
+	//////////////////////////
+
+	//BUSCAR BANCO PARA EDITAR
+	function modal_ver_comensal(id){
+		var id_comensales = id;
+	    var base_url =window.location.origin+'/caribia/index.php/Comensales/consulta_com_edt';
+		//var base_url = '/index.php/Comensales/consulta_cargos';
+		$.ajax({
+			url: base_url,
+			method:'post',
+			data: {id_comensales: id_comensales},
+			dataType:'json',
+
+			success: function(response){
+				$('#id').val(response['id_comensales']);
+				$('#nombre_edit').val(response['nombre']);
+				$('#cedula_edit').val(response['cedula']);
+				$('#id_cargo_edit').val(response['id_cargo']);
+				$('#id_und_adscripcion_edit').val(response['id_und_adscripcion']);
+
 			}
 		});
 	}

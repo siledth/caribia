@@ -10,8 +10,9 @@ class Comedor extends CI_Controller
             redirect('login');
         }
        // $data['contratista'] =	$this->Comensales_model->llenar_contratista_exonerado();
-        $data['comensales'] = $this->Comedor_model->consultar_comensales();
-        $data['comedor'] = $this->Comedor_model->consultar_comedor();
+        $fecha=date("d-m-Y");
+        $data['comensales'] = $this->Comedor_model->consultar_comensales($fecha);
+        $data['comedor'] = $this->Comedor_model->consultar_comedor($fecha);
         $data['cargo'] 	 = $this->Comensales_model->consulta_cargos();
         $data['adscrito'] 	 = $this->Comensales_model->consulta_adscrito();
         $data['time']=date("d-m-Y");
@@ -91,6 +92,7 @@ class Comedor extends CI_Controller
             'total' => $this->input->POST('total'),
             'invitado' => $this->input->POST('invitado'),
             'autorizado' => $this->input->POST('autorizado'),
+            'comida_entregada' => $this->input->POST('total_comida'),
             'fecha' => $this->input->POST('fecha'),
             'id_usuaio' => $this->session->userdata('id_user'),
             // 'fecha_creacion' => date("Y-m-d"), 
@@ -103,5 +105,5 @@ class Comedor extends CI_Controller
         $data = $this->Comedor_model->registrar_comida($data,$data2);
         echo json_encode($data);
     }
-   
+    
 }

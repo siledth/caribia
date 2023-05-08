@@ -1,30 +1,36 @@
-function modal_ver(id) {
-    var autorizado = id;
-    var base_url = window.location.origin + '/caribia/index.php/Comensales/consulta_autoriza';
-    // var base_url = '/index.php/Certificacion/consulta_b';
+//BUSCAR BANCO PARA EDITAR
+function modal_ver_comensal(id){
+    var id_comensales = id;
+    var base_url =window.location.origin+'/caribia/index.php/Comensales/edi';
+    //var base_url = '/index.php/Comensales/consulta_cargos';
     $.ajax({
         url: base_url,
-        method: 'post',
-        data: { autorizado: autorizado },
-        dataType: 'json',
+        method:'post',
+        data: {id_comensales: id_comensales},
+        dataType:'json',
 
-        success: function (response) {
-            $('#id').val(response['cedula']);
-            $('#edt_autorizado').val(response['autorizado']);
+        success: function(response){
+            $('#id').val(response['id_comensales']);
+            $('#nombre_edit').val(response['nombre']);
+            $('#cedula_edit').val(response['cedula']);
+            $('#id_cargo_edit').val(response['id_cargo']);
+            $('#id_und_adscripcion_edit').val(response['id_und_adscripcion']);
 
         }
     });
 }
-function editar_b() {
-    var cedula = $("#id").val();
-    var autorizado = $("#edt_autorizado").val();
-    var observacion = $("#Observación_edit").val();
+function editar_comanesales() {
+    var id_comensales = $("#id").val();
+    var cedula = $("#cedula_edit").val();
+    var nombre = $("#nombre_edit").val();
+    var id_cargo = $("#id_cargo_edit").val();
+    var id_und_adscripcion = $("#id_und_adscripcion_edit").val();
 
     var datos = new FormData($("#editar")[0]);
-    if (cedula == '') {
-        document.getElementById("cedula").focus();
-    } else if (autorizado == '') {
-        document.getElementById("autorizado").focus();
+    if (id_comensales == '') {
+        document.getElementById("id_comensales").focus();
+    } else if (cedula == '') {
+        document.getElementById("cedula_edit").focus();
     } else {
         event.preventDefault();
         swal.fire({
@@ -40,15 +46,18 @@ function editar_b() {
             if (result.value == true) {
                 event.preventDefault();
                 var datos = new FormData($("#editar")[0]);
-                var base_urls = window.location.origin + '/caribia/index.php/Comensales/editar_autoriza';
+                var base_urls = window.location.origin + '/caribia/index.php/Comensales/editar_comanesales';
                 //var base_urls = '/index.php/Certificacion/editar_b';
                 $.ajax({
                     url: base_urls,
                     method: 'post',
                     data: {
+                        id_comensales: id_comensales,
                         cedula: cedula,
-                        autorizado: autorizado,
-                        observacion: observacion
+                        nombre: nombre,
+                        id_cargo: id_cargo,
+                        id_und_adscripcion: id_und_adscripcion
+
                     },
                     dataType: 'json',
                     success: function (response) {

@@ -140,7 +140,8 @@
             </li>
 
             <li class="has-sub">
-                <a href="javascript:;">
+            <?php if (($this->session->userdata('certificacion') == 1)) : ?>
+            <a href="javascript:;">
                     <b class="caret"></b>
                     <i class="fas fa-paste fa-lg" style="background:blue;"></i>
                     <span>Comedor</span>
@@ -149,7 +150,7 @@
                     <li class="has-sub">
                         <a href="javascript:;">
                         </a>
-                        <?php if (($this->session->userdata('certificacion') == 1)) : ?>
+                      
                     <li class="has-sub">
                     <li>
                         <a href="<?= base_url() ?>index.php/Comedor/registrar_comidas"><i
@@ -186,7 +187,24 @@
                     
 
                     <?php if (($this->session->userdata('ver_user') == 1)) : ?>
-                   
+                    <li class="has-sub">
+                            <a href="javascript:;">
+                            <span>Usuarios</span>
+                            </a>
+                            <ul class="sub-menu">
+                            <li>
+                                <a href="<?= base_url() ?>index.php/user/int">
+                                    <i class="fas fa-lg fa-fw m-r-10 fa-list-alt"></i>- Registros Usuarios
+                                </a>
+                            </li>
+                            </ul>
+                    </li>   
+
+
+
+
+
+
 
                 </ul>
             </li>
