@@ -32,7 +32,7 @@ class Login extends CI_Controller {
       $id_unidad = $inf['id_unidad'];
       $data2 = $this->login_model->consultar_empresa($id_unidad);
       if ($data2) {
-        $user_data = [
+        $user_data = [ 
           'id_user' => $data['id'],
           'nombre' => $data['nombre'],
           'email' => $data['email'],
