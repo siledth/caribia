@@ -1,22 +1,46 @@
-function modal_ver(id) {
-    var autorizado = id;
+// function modal_ver(id) {
+//     var autorizado = id;
+//     var base_url = window.location.origin + '/caribia/index.php/Comensales/consulta_autoriza';
+//     // var base_url = '/index.php/Certificacion/consulta_b';
+//     $.ajax({
+//         url: base_url,
+//         method: 'post',
+//         data: { autorizado: autorizado },
+//         dataType: 'json',
+
+//         success: function (response) {
+//             $('#id').val(response['cedula']);
+//             $('#edt_autorizado').val(response['autorizado']);
+
+//         }
+//     });
+// }
+// esto es facilitador
+function modal_ver(id){
+    var id_comensales = id;
     var base_url = window.location.origin + '/caribia/index.php/Comensales/consulta_autoriza';
-    // var base_url = '/index.php/Certificacion/consulta_b';
+   // var base_url = '/index.php/Certificacion/consulta_facilitadores';
     $.ajax({
         url: base_url,
-        method: 'post',
-        data: { autorizado: autorizado },
-        dataType: 'json',
+        method:'post',
+        data: {id_comensales: id_comensales},
+        dataType:'json',
 
-        success: function (response) {
-            $('#id').val(response['cedula']);
+        success: function(response){
+            $('#id_comensales').val(response['id_comensales']);
+            $('#cedula').val(response['cedula']);
             $('#edt_autorizado').val(response['autorizado']);
-
+            $('#nombre').val(response['nombre']);
+            
+          
+           
         }
     });
 }
+
+
 function editar_b() {
-    var cedula = $("#id").val();
+    var cedula = $("#id_comensales").val();
     var autorizado = $("#edt_autorizado").val();
     var observacion = $("#Observación_edit").val();
 
@@ -24,7 +48,7 @@ function editar_b() {
     if (cedula == '') {
         document.getElementById("cedula").focus();
     } else if (autorizado == '') {
-        document.getElementById("autorizado").focus();
+        document.getElementById("edt_autorizado").focus();
     } else {
         event.preventDefault();
         swal.fire({

@@ -87,7 +87,7 @@ class Comensales extends CI_Controller
             }
             // $data['contratista'] =	$this->Comensales_model->llenar_contratista_exonerado();
 
-            $data['cargo'] 	 = $this->Comensales_model->consulta_adscrito();
+            $data['cargo'] 	 = $this->Comensales_model->consulta_cargos();
 
             $usuario = $this->session->userdata('id_user');
             $this->load->view('templates/header.php');
@@ -131,9 +131,9 @@ class Comensales extends CI_Controller
             $data = $this->input->post();
 
             $data = array(
-                'id_exonerado' => $data['id_banco'],
-                'rif' => $data['codigo_b'],
-                'descripcion' => $data['nombre_b'],
+                'id_cargo' => $data['id_cargo'],
+                'nombre' => $data['nombre'],
+                'tarifa' => $data['tarifa'],
                 'id_usuaio' => $this->session->userdata('id_user')
             );
 
@@ -151,6 +151,8 @@ class Comensales extends CI_Controller
             $data = $this->Comensales_model->eliminar_cargos($data);
             echo json_encode($data);
         }
+
+        /////////////////////////////////////////////////////////////////
 
         ////////////////////////////////////////////registro de Unidad de Adscripción
 
@@ -177,13 +179,13 @@ class Comensales extends CI_Controller
                 redirect('login');
             }
             $data = array(
-                'tarifa' => $this->input->POST('tarifa'),
+                
                 'nombre' => $this->input->POST('nombre'),
                 'id_usuaio' => $this->session->userdata('id_user'),
                 'fecha_creacion' => date("Y-m-d"),
                 'fecha_update' => date("Y-m-d"),
             );
-            $data = $this->Comensales_model->registrar_carg($data);
+            $data = $this->Comensales_model->registrar_undd($data);
             echo json_encode($data);
         }
         //LLENAR MODAL PARA EDITAR
@@ -251,7 +253,7 @@ class Comensales extends CI_Controller
         $data = $this->input->post();
 
         $data = array(
-            'cedula' => $data['cedula'],
+            'id_comensales' => $data['cedula'],
             'autorizado' => $data['autorizado'],
             'observacion' => $data['observacion'],
             'id_usuaio' => $this->session->userdata('id_user')

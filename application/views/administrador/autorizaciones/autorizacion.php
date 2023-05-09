@@ -28,7 +28,7 @@
 
                                 <td class="center">
                                 <a class="button">
-                                        <i title="Agregar" onclick="modal_ver(<?php echo $data['cedula']?>);" data-toggle="modal" data-target="#exampleModal" class="fas fa-lg fa-fw fa-edit" style="color:green"></i>
+                                        <i title="Agregar" onclick="modal_ver(<?php echo $data['id_comensales']?>);" data-toggle="modal" data-target="#exampleModal" class="fas fa-lg fa-fw fa-edit" style="color:green"></i>
                                     <a/>
                                 </td>
                             </tr>
@@ -49,7 +49,7 @@
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Editar autorización</h5>
+                <h5 class="modal-title" id="exampleModalLabel">Apoyo/ Autorización</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -60,12 +60,18 @@
                     <div class="row">
                         <div class="form-group col-4">
                             <label>Cedula</label>
-                            <input class="form-control" type="text" name="id" id="id" readonly>
+                            <input class="form-control" type="text" name="cedula" id="cedula" readonly>
+                            <input class="form-control" type="hidden" name="id_comensales" id="id_comensales" readonly>
                         </div>
-                        <div class="col-8"></div>
-                        <div class="form-group col-4">
-                            <label>Cantidad de Comidas</label>
-                            <input class="form-control" type="number" onkeypress="return valideKey(event);"
+                        <div class="form-group col-5">
+                            <label>Nombre</label>
+                            <input class="form-control" type="text" name="nombre" id="nombre" readonly>
+                            
+                        </div>
+                        
+                        <div class="form-group col-8">
+                            <label>Cantidad de Comidas Autorizadas / Para llevar</label>
+                            <input class="form-control" type="number"  
                                 name="edt_autorizado" id="edt_autorizado">
                         </div>
                         <div class="form-group col-8">

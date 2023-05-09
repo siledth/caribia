@@ -106,7 +106,7 @@ function registrar_comida($data,$data2)
     }
     
     return true;
-
+ 
 
 }
 ///////////////////consultar comedor

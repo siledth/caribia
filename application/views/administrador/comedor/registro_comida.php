@@ -67,7 +67,7 @@
                             class="table table-bordered table-hover">
                                     <thead style="background:#01cdb2">
                                         <tr style="text-align:center">
-                                            <th style="color:white;">Cedula</th>
+                                          
                                             <th style="color:white;">Nombre y Apellido</th>
                                             <th style="color:white;">Comida Entregada</th>
                                           
@@ -77,7 +77,7 @@
                                         <?php foreach($comedor as $data):?>
                                         <tr class="odd gradeX" style="text-align:center">
                                             
-                                            <td><?=$data['id_comedor']?> </td>
+                                            
                                             <td><?=$data['descrp']?> </td>
                                             <td> <?=$data['comida_entregada']?></td>
                                             

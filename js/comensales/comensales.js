@@ -219,8 +219,8 @@ function valideKey(evt){
 			}).then((result) => {
 				if (result.value == true) {
 					event.preventDefault();
-					var datos = new FormData($("#guardar_cargo")[0]);
-					var base_url =window.location.origin+'/caribia/index.php/Comensales/registrar_carg';
+					var datos = new FormData($("#guardar_und")[0]);
+					var base_url =window.location.origin+'/caribia/index.php/Comensales/registrar_und';
 					//var base_url = '/index.php/Comensales/registrar_carg';
 					$.ajax({
 						url:base_url,
@@ -250,33 +250,33 @@ function valideKey(evt){
 	}
 	//BUSCAR BANCO PARA EDITAR
 	function modal_ver_cargo(id){
-		var id_exonerado = id;
+		var id_cargo = id;
 	    var base_url =window.location.origin+'/caribia/index.php/Comensales/consulta_cargos';
 		//var base_url = '/index.php/Comensales/consulta_cargos';
 		$.ajax({
 			url: base_url,
 			method:'post',
-			data: {id_exonerado: id_exonerado},
+			data: {id_cargo: id_cargo},
 			dataType:'json',
 
 			success: function(response){
-				$('#id').val(response['id_exonerado']);
-				$('#cod_banco_edit').val(response['rif']);
-				$('#nombre_banco_edit').val(response['descripcion']);
+				$('#id').val(response['id_cargo']);
+				$('#nombre_edit').val(response['nombre']);
+				$('#tarifa_edit').val(response['tarifa']);
 			}
 		});
 	}
 	//EDITAR BANCO
 	function editar_cargo(){
-		var id_banco = $("#id").val();
-		var codigo_b = $("#cod_banco_edit").val();
-		var nombre_b = $("#nombre_banco_edit").val();
+		var id_cargo = $("#id").val();
+		var nombre = $("#nombre_edit").val();
+		var tarifa = $("#tarifa_edit").val();
 
 		var datos = new FormData($("#editar")[0]);
-		if (codigo_b == '') {
-			document.getElementById("codigo_b").focus();
-		}else if(nombre_b == ''){
-			document.getElementById("nombre_b").focus();
+		if (nombre == '') {
+			document.getElementById("nombre_edit").focus();
+		}else if(tarifa == ''){
+			document.getElementById("tarifa_edit").focus();
 		}else {
 			event.preventDefault();
 			swal.fire({
@@ -295,11 +295,11 @@ function valideKey(evt){
 					var base_url =window.location.origin+'/caribia/index.php/Comensales/editar_cargos';
 					//var base_url = '/index.php/Comensales/editar_cargos';
 					$.ajax({
-						url: base_urls,
+						url: base_url,
 						method:'post',
-						data: {id_banco: id_banco,
-							codigo_b: codigo_b,
-							nombre_b: nombre_b
+						data: {id_cargo: id_cargo,
+							nombre: nombre,
+							tarifa: tarifa
 						},
 					dataType:'json',
 						success: function(response){

@@ -108,6 +108,28 @@ class Comensales_model extends CI_model
         return true;
     }
 
+    ///////////////////////////////////////////////////registrar und
+
+
+     /////////////////////GUARDAR CARGos
+     public function registrar_undd($data)
+     {
+         $this->db->select('max(e.id_und_adscripcion) as id1');
+         $query1 = $this->db->get('public.und_adscripcion e');
+         $response4 = $query1->row_array();
+         $id1 = $response4['id1'] + 1;
+         $data1 = array(
+             'id_und_adscripcion'		    => $id1,
+             'nombre'		=> $data['nombre'],
+             'fecha_creacion'		=> $data['fecha_creacion'],
+             'fecha_update'		    => $data['fecha_update'],
+             'id_usuaio'        => $data['id_usuaio']
+ 
+         );
+         $quers =$this->db->insert("public.und_adscripcion", $data1);
+ 
+         return true;
+     }
     /////////////////////////////////////////////////apoyo - autoriza
     //VER PARA EDITAR
     public function consultar_comensales1()
@@ -121,20 +143,24 @@ class Comensales_model extends CI_model
         $query = $this->db->get();
         return $query->result_array();
     }
-        public function consulta_autoriz($data)
-        {
-            $this->db->select('*');
+     
+
+        function consulta_autoriz($data){
+            $this->db->select('cedula,autorizado,id_comensales,nombre');
             $this->db->from('public.comensales');
-            $this->db->where('cedula', $data['autorizado']);
-            // $this->db->order_by("codigo_b", "Asc");
+            $this->db->where('id_comensales', $data['id_comensales']);
+            
             $query = $this->db->get();
             if (count($query->result()) > 0) {
                 return $query->row();
             }
         }
+
+
+
         public function editar_autoriza($data)
         {
-            $this->db->where('cedula', $data['cedula']);
+            $this->db->where('id_comensales', $data['id_comensales']);
             $update = $this->db->update('public.comensales', $data);
             return true;
         }

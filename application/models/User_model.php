@@ -157,16 +157,40 @@ function desblo_usuario($data){
 
 
     // aca debe guardar cuenta dante en usuario y guardar los otros datos en funcionarios
-    public function savedante($data1,$datos2)
+    public function savedante($data1)
+
+    
     {
+        $this->db->select('max(e.id) as id1');
+        $query1 = $this->db->get('seguridad.usuarios e');
+        $response4 = $query1->row_array();
+        $id1 = $response4['id1'] + 1;
+        $data2 = array(
+            'id'		    => $id1,
+            'nombre'		=> $data1['email'],
+            'password'		=> $data1['password'],
+            'perfil'		    => $data1['perfil'],
+            'foto'		    => $data1['foto'],
+            'estado'        => $data1['estado'],
+            'ultimo_login'        => $data1['ultimo_login'],
+            'fecha'        => $data1['fecha'],
+            'intentos'        => $data1['intentos'],
+            'unidad'        => $data1['unidad'],
+            'id_estatus'        => $data1['id_estatus'],
+            'fecha_update'        => $data1['fecha_update'],
+            'rif_organoente'        => $data1['rif_organoente'],
+            'nombre_apellido'        => $data1['nombre_apellido']
+
+        );
+        $quers =$this->db->insert("seguridad.usuarios", $data2);
+
+        return true;
+
+
         $this->db->insert("seguridad.usuarios", $data1);
         //la funcion  insert_id(); me guarda el id del ultimo registo
-        $identificador = $this->db->insert_id();
-        if ($identificador != 0) {
-          $datos2['id_usuario'] = $identificador;
-          $this->db->insert('seguridad.funcionarios', $datos2);
           return true;
-        }
+        
 
     }
     public function get_usuario() {

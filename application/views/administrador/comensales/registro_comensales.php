@@ -10,7 +10,7 @@
                         <div class="row">
                             <div class="form-group col-6">
                                 <label>Cedula <b title="Campo Obligatorio" style="color:red">*</b></label>
-                                <input class="form-control" onkeypress="may(this);" type="text" name="cedula"
+                                <input class="form-control" onkeypress="may(this);" type="number" name="cedula"
                                     id="cedula" placeholder="XXXX">
                                 </select>
                             </div>

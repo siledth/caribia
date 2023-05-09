@@ -51,7 +51,7 @@
 
                                 <td class="center">
                                     <a class="button">
-                                        <i title="Editar" onclick="modal_ver(<?php echo $data['id_cargo']?>);"
+                                        <i title="Editar" onclick="modal_ver_cargo(<?php echo $data['id_cargo']?>);"
                                             data-toggle="modal" data-target="#exampleModal"
                                             class="fas fa-lg fa-fw fa-edit" style="color:green"></i>
                                         <a />

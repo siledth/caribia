@@ -77,12 +77,14 @@ $captcha_numbers = array(0, 1, 2, 3, 4, 5, 6, 7, 8, 9);*/
                 <div class="login-header">
                     <div class="brand  text-center">
                         <span class="logo">
-                            <i style="color:blue" class="fas fa-user-shield"></i>
+                        <img style="width: 160%"  src="<?= base_url() ?>Plantilla/img/favicon.ico" alt="Card image">
                         </span>
                         <b class="ml-3"> Bienvenido</b>
                     </div>
                     <div class="icon">
-                        <i class="fa fa-sign-in"></i>
+                    
+                     
+                    <i class="fa fa-sign-in"></i>
                     </div>
                 </div>
                 <div class="login-content">

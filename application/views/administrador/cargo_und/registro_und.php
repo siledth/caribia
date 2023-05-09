@@ -4,7 +4,7 @@
     <div class="row">
         <div class="col-lg-12">
             <div class="panel panel-inverse" data-sortable-id="form-validation-1">
-                <form class="form-horizontal" id="guardar_cargo" data-parsley-validate="true" method="POST"
+                <form class="form-horizontal" id="guardar_und" data-parsley-validate="true" method="POST"
                     enctype="multipart/form-data">
                     <div class="panel-body">
                         <div class="row">
@@ -12,20 +12,16 @@
                             <div class="form-group col-6">
                                 <label>Descripción <b title="Campo Obligatorio" style="color:red">*</b></label>
                                 <input class="form-control" onkeypress="may(this);" type="text" name="nombre"
-                                    id="nombre" placeholder="nombre del cargo">
+                                    id="nombre" placeholder="nombre de Unidad de Adscripción">
                             </div>
 
-                            <div class="form-group col-6">
-                                <label>Tarifa <b title="Campo Obligatorio" style="color:red">*</b></label>
-                                <input class="form-control" onkeypress="may(this);" type="number" name="tarifa"
-                                    id="tarifa">
-                            </div>
+                          
 
 
                         </div>
                     </div>
                     <div class="form-group col 12 text-center">
-                        <button type="button" onclick="registrar_carg();" id="guardar" name="guardar"
+                        <button type="button" onclick="registrar_und();" id="guardar" name="guardar"
                             class="btn btn-primary mb-3">Guardar</button>
                     </div>
                     </from>
@@ -39,8 +35,9 @@
                         <thead style="background:#01cdb2">
                             <tr style="text-align:center">
                                 <th style="color:white;">Descripción</th>
+                                <th style="color:white;"></th>
                                 
-                                <th style="color:white;">Acción</th>
+                                
                             </tr>
                         </thead>
                         <tbody>
@@ -63,7 +60,7 @@
     </div>
 </div>
 
-<script src="<?=base_url()?>js/comensales/comensales.js"></script>
+<script src="<?=base_url()?>js/comensales/und.js"></script>
 
 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
     aria-hidden="true">

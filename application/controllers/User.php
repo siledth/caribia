@@ -129,25 +129,18 @@ class User extends CI_Controller
 		$rif=$data['rif'];
 		$nombrefun = $this->input->post("nombrefun");
 		$apellido = $this->input->post("apellido");
-		
+		$email = $this->input->post("email");
+		$password = $this->input->post("password");
+		$repeatPassord = $this->input->post("repeatPassord");
+		$perfil = $this->input->post("perfil");
 		//aca empiezo las validaciones
 		$this->form_validation->set_rules('perfil', 'perfil', 'trim|required|callback_select_validate');
-		$this->form_validation->set_rules('id_unidad', 'id_unidad', 'trim|required|callback_select_validate');
 		$this->form_validation->set_rules('nombrefun', 'Nombre ', 'trim|required|min_length[3]');
-
-		$this->form_validation->set_rules('cedula', 'cedula de dentidad', 'trim|required|min_length[6]|is_natural');
-		$this->form_validation->set_rules('email', 'Correo eléctronico ', 'trim|required|valid_email|is_unique[usuario.email]');
+        $this->form_validation->set_rules('email', 'Correo eléctronico ', 'trim|required|valid_email|is_unique[usuario.email]');
 		//vista en public
-		$this->form_validation->set_rules(
-			'usuario', 'usuario',
-			'required|is_unique[usuario.nombre]',
-			array(
-					'required'      => 'You have not provided %s.',
-					'is_unique'     => 'El nombre de usuario ya existe, intente de nuevo'
-			)
-	);
+		
 
-		$this->form_validation->set_rules( 'password', 'Contraseña', 'trim|required|min_length[6]|max_length[15]');
+		$this->form_validation->set_rules( 'password', 'Contraseña', 'trim|required|min_length[1]');
 		$this->form_validation->set_rules('repeatPassord', 'Confirma contraseña', 'required|matches[password]');
 		//$this->form_validation->set_rules('usuario', 'Usuario', 'required|min_length[5]|is_unique[usuario.nombre]|callback_chk_password_expression');
 
@@ -161,7 +154,7 @@ class User extends CI_Controller
 			$this->load->view('user/usuarioexterno.php', $data);
 			$this->load->view('templates/footer.php');
 
-		} else {
+		} else { 
 
 			$clave = password_hash(
 				base64_encode(
@@ -170,11 +163,11 @@ class User extends CI_Controller
 				PASSWORD_DEFAULT
 			);
 			//esto es lo que va a la primera tabla usuarios
-			$data = array(
+			$data1 = array(
 		// 		$codigo = $data['codigo'];
 		// $rif=$data['rif'];
 
-				"nombre" => $usuario,
+				"nombre" => $email,
 				"password" => $clave,
 				"email" => $email,
 				"perfil" => $perfil,
@@ -183,32 +176,18 @@ class User extends CI_Controller
 				"ultimo_login" => date("Y-m-d"),
 				"fecha" => date("Y-m-d"),
 				"intentos" => 0,
-				"unidad" => $codigo,
+				"unidad" => 20,
 				"id_estatus"=>1,
 				"fecha_update" => date("Y-m-d"),
-				"rif_organoente" =>$rif
+				"rif_organoente" =>20,
+
+				"nombre_apellido" =>$nombrefun,
 
 			);
 
-			$data2 = array(
-				"nombrefun" => $nombrefun,
-				"apellido" => $apellido,
-				"tipo_cedula" => $tipo_ced,
-				"cedula" => $cedula,
-				"tele_1" => $tele_1,
-				"tele_2" => $tele_2,
-				"cargo" => $cargo,
-				"oficina" => $oficina,
-				"fecha_designacion" => $fecha_designacion,
-				"numero_gaceta" => $numero_gaceta,
-				"email" => $email,
-				"obser" => $obser,
-				"tipo_funcionario" => 3, // revisar que es esto
-				"unidad" => $codigo,
-				"id_usuario" => null
-			);
+			
 
-			$this->User_model->savedante($data, $data2);
+			$this->User_model->savedante($data1);
 			$this->session->set_flashdata('success', 'El usuario Registrado es de uso personal, no se debe compartir.');
 			redirect('user/int');
 		}

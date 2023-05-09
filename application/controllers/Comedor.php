@@ -10,7 +10,7 @@ class Comedor extends CI_Controller
             redirect('login');
         }
        // $data['contratista'] =	$this->Comensales_model->llenar_contratista_exonerado();
-        $fecha=date("d-m-Y");
+        $fecha=date("d-m-Y H:m:s");
         $data['comensales'] = $this->Comedor_model->consultar_comensales($fecha);
         $data['comedor'] = $this->Comedor_model->consultar_comedor($fecha);
         $data['cargo'] 	 = $this->Comensales_model->consulta_cargos();

@@ -31,7 +31,7 @@
                             </div>
                             
                             <div class="form-group col-6">
-                                <label>Nombre completo <b title="Campo Obligatorio" style="color:red">*</b></label>
+                                <label>Nombre Y Apellido <b title="Campo Obligatorio" style="color:red">*</b></label>
                                 <input type="text" name="nombrefun" onkeyup="mayusculas(this);"
                                     class="form-control  <?php echo form_error('nombrefun') ? 'is-invalid' : ''; ?>"
                                     placeholder="Nombre completo" onKeyUp="mayus(this);"
@@ -40,24 +40,15 @@
                                     <?php echo form_error('nombrefun'); ?>
                                 </div>
                             </div>
-                            <div class="form-group col-3">
-                                <label>Cédula de Identidad <b title="Campo Obligatorio" style="color:red">*</b></label>
-                                <input type="text" id="cedula" name="cedula"
-                                    placeholder="ingrese la Cédula sin punto ni coma"
-                                    class="form-control  <?php echo form_error('cedula') ? 'is-invalid' : ''; ?>"
-                                    value="<?php echo set_value('cedula'); ?>" />
-                                <div class="invalid-feedback">
-                                    <?php echo form_error('cedula'); ?>
-                                </div>
-                            </div>
+                            
                            
                             <div class="form-group col-6">
                                 <label>Correo electronico <b title="Campo Obligatorio" style="color:red">*</b></label>
-                                <input type="text" name="usuario"
-                                    class="form-control <?php echo form_error('usuario') ? 'is-invalid' : '';?>"
-                                    placeholder="usuario completo" value="<?php echo set_value('usuario');?>">
+                                <input type="text" name="email"
+                                    class="form-control <?php echo form_error('email') ? 'is-invalid' : '';?>"
+                                    placeholder="email completo" value="<?php echo set_value('email');?>">
                                 <div class="invalid-feedback">
-                                    <?php echo form_error('usuario'); ?>
+                                    <?php echo form_error('email'); ?>
                                 </div>
                             </div>
                             <div class="form-group col-6">

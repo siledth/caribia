@@ -4,7 +4,7 @@
     <div class="row">
         <h1 class="text-center mt-3">
             <i class="fas fa-fw m-r-10 fa-bullseye" style="color: darkred"></i>
-            Bienvenido al Sistema de Cuidad Caribia
+            Bienvenido al Sistema de Ciudad Caribia
         </h1>
         <!-- <div class="col-12 text-center mt-3">
             <img style="width: 100%"  src="<?= base_url() ?>Plantilla/img/93.png" alt="Card image">
